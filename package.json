@@ -1,0 +1,23 @@
+{
+  "name": "express-note-taker",
+  "version": "1.0.0",
+  "description": "Express app that creates and saves notes.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sloanlacey/express-note-taker.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sloanlacey/express-note-taker/issues"
+  },
+  "homepage": "https://github.com/sloanlacey/express-note-taker#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
