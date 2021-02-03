@@ -3,7 +3,7 @@ const fs = require('fs');
 const path = require('path');
 const generateUniqueId = require('generate-unique-id');
 
-const id = generateUniqueId({
+let id = generateUniqueId({
     length: 5,
     useLetters: false,
     useNumbers: true
@@ -27,12 +27,17 @@ module.exports = app => {
         // /api/notes post route
         app.post('/api/notes', function (req, res) {
             let newNote = {
-                id: id,
+                id: generateUniqueId({
+                    length: 5,
+                    useLetters: false,
+                    useNumbers: true
+                }),
                 title: req.body.title,
                 text: req.body.text
             }
             notes.push(newNote);
-            updateNotesData();
+            updateNotesData(notes);
+            res.json(notes);
             return console.log(`A new note has been added: ${newNote.title}`);
         })
         // get note with unique id
@@ -42,14 +47,15 @@ module.exports = app => {
         // delete a note with unique id
         app.delete('/api/notes/:id', function (req, res) {
             notes.splice(req.params.id, 1);
-            updateNotesData();
+            updateNotesData(notes);
+            res.json(notes);
             console.log(`Note with ID of ${req.params.id} has been deleted.`);
         })
 
     })
 
 // update json file when notes are added or deleted
-function updateNotesData() {
+function updateNotesData(notes) {
     fs.writeFile('db/db.json', JSON.stringify(notes,'\t'), err => {
         if (err) throw err;
         return true;
