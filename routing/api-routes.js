@@ -1,6 +1,13 @@
 // const db = require('../db/db.json');
 const fs = require('fs');
 const path = require('path');
+const generateUniqueId = require('generate-unique-id');
+
+const id = generateUniqueId({
+    length: 5,
+    useLetters: false,
+    useNumbers: true
+});
 
 require('./html-routes.js');
 
@@ -9,7 +16,7 @@ module.exports = app => {
     fs.readFile('db/db.json', 'utf8', (err, data) => {
         if (err) throw err;
      
-        var notes = JSON.parse(data);
+        let notes = JSON.parse(data);
 
         // API routes
 
@@ -19,7 +26,11 @@ module.exports = app => {
         })
         // /api/notes post route
         app.post('/api/notes', function (req, res) {
-            let newNote = req.body;
+            let newNote = {
+                id: id,
+                title: req.body.title,
+                text: req.body.text
+            }
             notes.push(newNote);
             updateNotesData();
             return console.log(`A new note has been added: ${newNote.title}`);
@@ -30,7 +41,7 @@ module.exports = app => {
         })
         // delete a note with unique id
         app.delete('/api/notes/:id', function (req, res) {
-            notes.splice(req.params.id);
+            notes.splice(req.params.id, 1);
             updateNotesData();
             console.log(`Note with ID of ${req.params.id} has been deleted.`);
         })
@@ -39,7 +50,7 @@ module.exports = app => {
 
 // update json file when notes are added or deleted
 function updateNotesData() {
-    fs.writeFile('db/db.json',JSON.stringify(notes,'\t'),err => {
+    fs.writeFile('db/db.json', JSON.stringify(notes,'\t'), err => {
         if (err) throw err;
         return true;
     });
