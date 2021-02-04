@@ -48,7 +48,7 @@ THEN the individual notes are deleted from the saved portion of the page
 
 ## Usage Instructions
 
-![Demo](#)
+![Demo](https://github.com/sloanlacey/express-note-taker/blob/main/public/assets/images/demo.gif)
 
 Click [here](https://drive.google.com/file/d/1iJJUqzz78ZtRYd9vmfa5cohU9SwN1Mzw/view) for a full video demonstration.
 
