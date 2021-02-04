@@ -50,7 +50,7 @@ THEN the individual notes are deleted from the saved portion of the page
 
 ![Demo](#)
 
-Click [here](#) for a full video demonstration.
+Click [here](https://drive.google.com/file/d/1iJJUqzz78ZtRYd9vmfa5cohU9SwN1Mzw/view) for a full video demonstration.
 
 ## Technologies
 
