@@ -3,11 +3,11 @@ const fs = require('fs');
 const path = require('path');
 const generateUniqueId = require('generate-unique-id');
 
-let id = generateUniqueId({
-    length: 5,
-    useLetters: false,
-    useNumbers: true
-});
+// let id = generateUniqueId({
+//     length: 10,
+//     useLetters: false,
+//     useNumbers: true
+// });
 
 require('./html-routes.js');
 
@@ -26,15 +26,16 @@ module.exports = app => {
         })
         // /api/notes post route
         app.post('/api/notes', function (req, res) {
-            let newNote = {
-                id: generateUniqueId({
-                    length: 5,
-                    useLetters: false,
-                    useNumbers: true
-                }),
+
+            const newNote = {
                 title: req.body.title,
-                text: req.body.text
-            }
+                text: req.body.text,
+                id: generateUniqueId({
+                    length: 10,
+                    useLetters: true,
+                    useNumbers: true
+                })
+            };
             notes.push(newNote);
             updateNotesData(notes);
             res.json(notes);
@@ -59,7 +60,7 @@ function updateNotesData(notes) {
     fs.writeFile('db/db.json', JSON.stringify(notes,'\t'), err => {
         if (err) throw err;
         return true;
-    });
-}
+    })
+};
 
-}
+};
