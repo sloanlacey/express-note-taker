@@ -40,11 +40,11 @@ THEN the individual notes are deleted from the saved portion of the page
 
 ## Homepage
 
-![Homepage](#)
+![Homepage](https://github.com/sloanlacey/express-note-taker/blob/main/public/assets/images/home.png)
 
 ## Preview Readme
 
-![Notes Page](#)
+![Notes Page](https://github.com/sloanlacey/express-note-taker/blob/main/public/assets/images/notes.png)
 
 ## Usage Instructions
 
